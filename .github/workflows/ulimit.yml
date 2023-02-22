@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: docker container run --name docker-nginx nginx
       - run: ulimit -n
       - run: ulimit -u
       - run: ulimit -i
