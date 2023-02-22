@@ -18,6 +18,7 @@ jobs:
           docker build . -t disk_filler
           docker run  -d -p 8080:8080 --name filler disk_filler -d
       - run: docker container run --name docker-nginx -d nginx
+      - run: sleep 15
       - run: ulimit -n
       - run: ulimit -u
       - run: ulimit -i
