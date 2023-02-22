@@ -13,12 +13,10 @@ jobs:
 
     steps:
       - run: | 
-          curl -SL https://github.com/alexei-led/pumba/releases/download/0.7.2/pumba_linux_amd64 -O
-          sudo mv pumba_linux_amd64 /usr/bin/pumba
-          sudo chmod +x /usr/bin/pumba
-          pumba --version
+          git clone https://github.com/javiroman/disk-stress.git
+          docker build . -t disk_filler
+          docker run  -d -p 8080:8080 --name filler disk_filler -d
       - run: docker container run --name docker-nginx -d nginx
-      - run: pumba stress -d 1m docker-nginx
       - run: ulimit -n
       - run: ulimit -u
       - run: ulimit -i
