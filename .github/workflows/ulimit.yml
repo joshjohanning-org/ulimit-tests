@@ -21,7 +21,7 @@ jobs:
           curl -s localhost:8080/info?path=/tmp | jq .
 
       - run: | 
-          # docker run --rm -it progrium/stress --cpu 2 --io 1 --vm 2 --vm-bytes 128M --timeout 10s
+          docker run --rm progrium/stress -d --cpu 2 --io 1 --vm 2 --vm-bytes 128M --timeout 10s
           echo "test"
       - run: docker container run --name docker-nginx -d nginx
       - run: sleep 15
