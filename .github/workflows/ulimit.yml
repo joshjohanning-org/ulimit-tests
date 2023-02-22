@@ -12,7 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: | 
+          curl -SL https://github.com/alexei-led/pumba/releases/download/0.7.2/pumba_linux_amd64 -O
+          sudo mv pumba_linux_amd64 /usr/bin/pumba
+          sudo chmod +x /usr/bin/pumba
+          pumba --version
       - run: docker container run --name docker-nginx -d nginx
+      - run: pumba stress -d 1m docker-nginx
       - run: ulimit -n
       - run: ulimit -u
       - run: ulimit -i
