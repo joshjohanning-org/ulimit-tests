@@ -18,12 +18,11 @@ jobs:
           docker build . -t disk_filler
           # docker run  -d -p 8080:8080 --name filler disk_filler
           docker run  -d -p 8080:8080 --memory 1024m --cpuset-cpus=0 --name filler disk_filler 
-          curl -s localhost:8080/info?path=/tmp | jq .
-
+          curl -s 0.0.0.0:8080/fill?size=2
       - run: | 
           docker run --rm -d progrium/stress --cpu 2 --io 1 --vm 2 --vm-bytes 128M --timeout 10s
           echo "test"
-      - run: docker container run --name docker-nginx -d nginx
+      # - run: docker container run --name docker-nginx -d nginx
       - run: sleep 1
       - run: ulimit -n
       - run: ulimit -u
