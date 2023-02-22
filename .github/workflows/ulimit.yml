@@ -14,6 +14,7 @@ jobs:
     steps:
       - run: | 
           git clone https://github.com/javiroman/disk-stress.git
+          cd disk-stress
           docker build . -t disk_filler
           docker run  -d -p 8080:8080 --name filler disk_filler -d
       - run: docker container run --name docker-nginx -d nginx
