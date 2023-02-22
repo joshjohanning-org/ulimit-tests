@@ -22,6 +22,7 @@ jobs:
       - run: | 
           docker run --rm -d progrium/stress --cpu 2 --io 1 --vm 2 --vm-bytes 1G --timeout 20
           echo "test"
+          # also https://unix.stackexchange.com/questions/535707/change-the-resource-limits-ulimit-rlimit-of-a-running-process
       # - run: docker container run --name docker-nginx -d nginx
       - run: sleep 1
       - run: ulimit -n
