@@ -17,7 +17,8 @@ jobs:
           cd disk-stress
           docker build . -t disk_filler
           docker run  -d -p 8080:8080 --name filler disk_filler
-          curl localhost:8080/fill?size=2
+          curl localhost>:8080/fill?size=2
+
       - run: | 
           # docker run --rm -it progrium/stress --cpu 2 --io 1 --vm 2 --vm-bytes 128M --timeout 10s
           echo "test"
